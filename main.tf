@@ -41,8 +41,8 @@ resource "aws_docdb_cluster" "docdb" {
   master_username         = data.aws_ssm_parameter.DB_ADMIN_USER
   master_password         = data.aws_ssm_parameter.DB_ADMIN_PASS
   skip_final_snapshot     = true
-  db_subnet_group_name = aws_docdb_subnet_group.default.name
-  vpc_security_group_ids = [aws_security_group.docdb.id]
+  db_subnet_group_name    = aws_docdb_subnet_group.default.name
+  vpc_security_group_ids  = [aws_security_group.docdb.id]
 }
 
 resource "aws_docdb_cluster_instance" "cluster_instances" {
