@@ -43,8 +43,8 @@ resource "aws_docdb_cluster" "docdb" {
   skip_final_snapshot     = true
   db_subnet_group_name    = aws_docdb_subnet_group.default.name
   vpc_security_group_ids  = [aws_security_group.docdb.id]
-  storage_encrypted       = true
-  kms_key_id              = data.aws_kms_key.key.arn
+#  storage_encrypted       = true
+#  kms_key_id              = data.aws_kms_key.key.arn
   tags = merge(
     local.common_tags,
     { Name = "${var.env}-docdb-cluster" }
