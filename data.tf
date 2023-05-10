@@ -7,5 +7,5 @@ data "aws_ssm_parameter" "DB_ADMIN_PASS" {
 }
 
 data "aws_kms_key" "key" {
-  kms_key_id = "alias/roboshop"
+  key_id = "alias/roboshop"
 }
