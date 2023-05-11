@@ -56,8 +56,8 @@ resource "aws_docdb_cluster_instance" "cluster_instances" {
   identifier         = "${var.env}docdb-cluster-${count.index+1}"
   cluster_identifier = aws_docdb_cluster.docdb.id
   instance_class     = var.instance_class
-  storage_encrypted  = true
-  kms_key_id         = data.aws_kms_key.key.arn
+#  storage_encrypted  = true
+#  kms_key_id         = data.aws_kms_key.key.arn
   tags = merge(
     local.common_tags,
     { Name = "${var.env}-docdb-cluster-instance-${count.index + 1}" }
