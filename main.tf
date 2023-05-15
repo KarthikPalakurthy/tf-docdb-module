@@ -72,6 +72,6 @@ resource "aws_ssm_parameter" "docdb_url_catalogue" {
 
 resource "aws_ssm_parameter" "docdb_url_user" {
   name  = "${var.env}.user.DOCDB_URL"
-  type  = "string"
+  type  = "String"
   value = "mongodb://${data.aws_ssm_parameter.DB_ADMIN_USER.value}:${data.aws_ssm_parameter.DB_ADMIN_PASS.value}@${aws_docdb_cluster.docdb.endpoint}:27017/user?tls=true&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false"
 }
