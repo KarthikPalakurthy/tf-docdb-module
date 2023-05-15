@@ -63,3 +63,15 @@ resource "aws_docdb_cluster_instance" "cluster_instances" {
     { Name = "${var.env}-docdb-cluster-instance-${count.index + 1}" }
   )
 }
+
+resource "aws_ssm_parameter" "docdb_url_catalogue" {
+  name  = "${var.env}.catalogue.DOCDB_URL"
+  type  = "string"
+  value = "mongodb://${data.aws_ssm_parameter.DB_ADMIN_USER.value}:${data.aws_ssm_parameter.DB_ADMIN_PASS.value}@${aws_docdb_cluster.docdb.endpoint}:27017/catalogue?tls=true&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false"
+}
+
+resource "aws_ssm_parameter" "docdb_url_user" {
+  name  = "${var.env}.user.DOCDB_URL"
+  type  = "string"
+  value = "mongodb://${data.aws_ssm_parameter.DB_ADMIN_USER.value}:${data.aws_ssm_parameter.DB_ADMIN_PASS.value}@${aws_docdb_cluster.docdb.endpoint}:27017/user?tls=true&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false"
+}
