@@ -77,7 +77,7 @@ resource "aws_ssm_parameter" "docdb_url_user" {
 }
 
 resource "aws_ssm_parameter" "docdb_url" {
-  name  = "${var.env}.DOCDB_URL"
+  name  = "${var.env}.docdb.DOCDB_URL"
   type  = "String"
   value = aws_docdb_cluster.docdb.endpoint
 }
